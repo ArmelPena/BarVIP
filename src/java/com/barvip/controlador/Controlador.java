@@ -11,7 +11,7 @@ import com.barvip.modelo.Pago;
 import com.barvip.modelo.Producto;
 import com.barvip.modelo.ProductoDAO;
 import com.barvip.modelo.cliente;
-import com.barvip.modelo.clienteDAO;
+import com.barvip.modelodao.ClienteDAO;
 import com.barvip.modelodao.ComprasDAO;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
 
-    clienteDAO objClienteDAO = new clienteDAO();
+    ClienteDAO objClienteDAO = new ClienteDAO();
     cliente objCliente = new cliente();
     int nResult = 0;
     
@@ -47,6 +47,7 @@ public class Controlador extends HttpServlet {
     String stEmail;
     String stIdentificacion;
     String stDireccion;
+    String stPassword;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -101,12 +102,14 @@ public class Controlador extends HttpServlet {
                 stNombres = request.getParameter("txtnom");
                 stEmail = request.getParameter("txtCorreo");
                 stDireccion = request.getParameter("txtdireccion");
+                stPassword = ""; //request.getParameter("txtdireccion");
                 
-                objCliente.setNombres(stIdentificacion);
+                objCliente.setDni(stIdentificacion);
                 objCliente.setNombres(stNombres);
                 objCliente.setEmail(stEmail);
-                objCliente.setEmail(stDireccion);
-                nResult = objClienteDAO.validar(objCliente);
+                objCliente.setDireccion(stDireccion);
+                objCliente.setPassword(stPassword);
+                nResult = objClienteDAO.crear(objCliente);
                 if(nResult == 1){
                     request.getSession().setAttribute("nom", stNombres);
                     request.getSession().setAttribute("correo", stEmail);

@@ -92,7 +92,7 @@
                     </table>
 
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="card">
                         <div class="card-header">
                             <h3>Generar Compra</h3>

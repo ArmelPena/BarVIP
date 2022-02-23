@@ -9,6 +9,7 @@ package com.barvip.modelo;
  *
  * @author ARMEL_000
  */
-public interface Validar {
+public interface iCliente {
     public int validar(cliente cli);
+    public int crear(cliente cli);
 }
