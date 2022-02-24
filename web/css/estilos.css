@@ -1,0 +1,31 @@
+* :root {
+  /* Configuración colores:  https://www.materialpalette.com/download.css/yellow/blue */;
+  --dark-primary-color    : #FBC02D;
+  --default-primary-color : #FFEB3B;
+  --light-primary-color   : #FFF9C4;
+  --text-primary-color    : #212121;
+  --accent-color          : #448AFF;
+  --light-text-color      : #FBFCFC;
+  --primary-text-color    : #212121;
+  --secondary-text-color  : #757575;
+  --divider-color         : #BDBDBD;
+  
+  --font: "sans-serif";
+}
+/*
+* {outline: 1px solid olive;}
+* 
+*/
+body {
+    color: var(--primary-text-color);
+    background-color: var(--light-primary-color);
+}
+
+#div1{
+    margin-top: 5%;
+    border-radius: 1em;
+}
+
+input {
+  width: 100%;
+}
