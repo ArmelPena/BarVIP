@@ -13,6 +13,7 @@ import com.barvip.modelo.ProductoDAO;
 import com.barvip.modelo.cliente;
 import com.barvip.modelodao.ClienteDAO;
 import com.barvip.modelodao.ComprasDAO;
+import com.barvip.modelodao.PagosDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
 
+    Pago objPago = new Pago();
+    PagosDAO objPagosDAO = new PagosDAO();
+    
     ClienteDAO objClienteDAO = new ClienteDAO();
     cliente objCliente = new cliente();
     int nResult = 0;
@@ -58,17 +62,39 @@ public class Controlador extends HttpServlet {
             case "GenerarCompra":
                 objCliente = null;
                 objCliente = new cliente();
-                Pago objPago= new Pago();
+                objPago = null;
+                objPago= new Pago();
+                objPagosDAO = null;
+                objPagosDAO = new PagosDAO();
+                
                 int nIdCliente = 12;
-                int nIdPago = 19;
                 Date dHoy = new Date();
                 java.sql.Date sqlFecha = new java.sql.Date(dHoy.getTime());
                 String strFecha = sqlFecha.toString();
-                ComprasDAO objComprasDAO = new ComprasDAO();
-                Compras objCompra = new Compras(nIdCliente,nIdPago,strFecha,TotalPagar,"Cancelado",ListaCarrito);
-                int nRet = objComprasDAO.GenerarCompra(objCompra);
-                if(nRet != 0 && TotalPagar > 0){
-                    request.getRequestDispatcher("Vistas/mensaje.jsp").forward(request, response);
+                
+                String stNombreCliente = request.getParameter("txtNombreCliente");
+                String stDireccio = request.getParameter("txtDireccio");
+                String stReferenciaDir = request.getParameter("txtReferenciaDir");
+                String stTelefono = request.getParameter("txtTelefono");
+                
+                Pago objPago = new Pago(0, 0.0, null, null, null, null);
+                objPago.setIdPago(0);
+                objPago.setMonto(TotalPagar);
+                objPago.setNombreCliente(stNombreCliente);
+                objPago.setDireccion(stDireccio);
+                objPago.setReferenciaDir(stReferenciaDir);
+                objPago.setTelefono(stTelefono);
+                nResult = objPagosDAO.GenerarPago(objPago);
+                if (nResult > 0){
+                    int nIdPago = nResult;              
+                    ComprasDAO objComprasDAO = new ComprasDAO();
+                    Compras objCompra = new Compras(nIdCliente,nIdPago,strFecha,TotalPagar,"Pendiente Pago",ListaCarrito);
+                    int nRet = objComprasDAO.GenerarCompra(objCompra);
+                    if(nRet != 0 && TotalPagar > 0){
+                        request.getRequestDispatcher("Vistas/mensaje.jsp").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("Vistas/error.jsp").forward(request, response);
+                    }
                 }else{
                     request.getRequestDispatcher("Vistas/error.jsp").forward(request, response);
                 }
