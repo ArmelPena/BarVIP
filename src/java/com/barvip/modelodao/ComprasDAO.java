@@ -39,7 +39,7 @@ public class ComprasDAO {
             ps.setDouble(4, Compras.getMonto());
             ps.setString(5, Compras.getEstado());
             nRetorno = ps.executeUpdate();
-            if(nRetorno == 0){
+            if(nRetorno == 1){
                 sql = "Select @@IDENTITY AS IdCompras";
                 rs = ps.executeQuery(sql);
                 rs.next();
@@ -62,7 +62,7 @@ public class ComprasDAO {
                 }
             }
         } catch (SQLException ex) {
-            nRetorno = 1;
+            nRetorno = 0;
             Logger.getLogger(ComprasDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nRetorno;
