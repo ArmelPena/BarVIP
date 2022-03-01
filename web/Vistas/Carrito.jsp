@@ -90,25 +90,35 @@
                             </c:forEach>
                         </tbody>
                     </table>
-
                 </div>
                 <div class="col-sm-3">
                     <div class="card">
                         <div class="card-header">
                             <h3>Generar Compra</h3>
                         </div>
-                        <div class="card-body">
-                            <label>Subtotal:</label>
-                            <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">
-                            <label>Descuento:</label>
-                            <input type="text" readonly="" class="form-control">
-                            <label>Total a pagar:</label>
-                            <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">                            
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
-                            <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar Compra</a>
-                        </div>
+                        <form action="Controlador">
+                            <div class="card-body">
+                                <label>Subtotal:</label>
+                                <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">
+                                <label>Descuento:</label>
+                                <input type="text" readonly="" class="form-control">
+                                <label>Total a pagar:</label>
+                                <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">
+                                <br>
+                                <h5>Ingrese los datos del pago</h5>
+                                <label>Cliente:</label>
+                                <input class="form-control" type="text" name="txtNombreCliente" placeholder="Nombre cliente">
+                                <label>Dirección y referencia:</label>
+                                <input class="form-control" type="text" name="txtDireccio" placeholder="Dirección de entrega">
+                                <input class="form-control" type="text" name="txtReferenciaDir" placeholder="Referencia de ubicación">
+                                <label>Teléfono confirmación:</label>
+                                <input class="form-control" type="text" name="txtTelefono" placeholder="Teléfono para confirmar compra">
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
+                                <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar Compra</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
