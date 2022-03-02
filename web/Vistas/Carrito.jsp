@@ -107,16 +107,17 @@
                                 <br>
                                 <h5>Ingrese los datos del pago</h5>
                                 <label>Cliente:</label>
-                                <input class="form-control" type="text" name="txtNombreCliente" placeholder="Nombre cliente">
+                                <input class="form-control" type="text" name="txtnombrecliente" placeholder="Nombre cliente">
                                 <label>Dirección y referencia:</label>
-                                <input class="form-control" type="text" name="txtDireccio" placeholder="Dirección de entrega">
-                                <input class="form-control" type="text" name="txtReferenciaDir" placeholder="Referencia de ubicación">
+                                <input class="form-control" type="text" name="txtdireccio" placeholder="Dirección de entrega">
+                                <input class="form-control" type="text" name="txtreferenciadir" placeholder="Referencia de ubicación">
                                 <label>Teléfono confirmación:</label>
-                                <input class="form-control" type="text" name="txtTelefono" placeholder="Teléfono para confirmar compra">
+                                <input class="form-control" type="text" name="txttelefono" placeholder="Teléfono para confirmar compra">
                             </div>
                             <div class="card-footer">
-                                <a href="#" class="btn btn-info btn-block">Realizar Pago</a>
-                                <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar Compra</a>
+                                <%-- <a href="#" class="btn btn-info btn-block">Realizar Pago</a> 
+                                <a href="Controlador?accion=GenerarCompra" class="btn btn-danger btn-block">Generar Compra</a> --%>
+                                <input type="submit" class="btn btn-success btn-block"  name="accion" value="Generar compra">
                             </div>
                         </form>
                     </div>

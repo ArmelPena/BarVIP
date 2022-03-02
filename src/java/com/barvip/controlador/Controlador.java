@@ -59,7 +59,7 @@ public class Controlador extends HttpServlet {
         String accion = request.getParameter("accion");
         productos = pdao.Listar();
         switch (accion) {
-            case "GenerarCompra":
+            case "Generar compra":
                 objCliente = null;
                 objCliente = new cliente();
                 objPago = null;
@@ -72,10 +72,10 @@ public class Controlador extends HttpServlet {
                 java.sql.Date sqlFecha = new java.sql.Date(dHoy.getTime());
                 String strFecha = sqlFecha.toString();
                 
-                String stNombreCliente = request.getParameter("txtNombreCliente");
-                String stDireccio = request.getParameter("txtDireccio");
-                String stReferenciaDir = request.getParameter("txtReferenciaDir");
-                String stTelefono = request.getParameter("txtTelefono");
+                String stNombreCliente = request.getParameter("txtnombrecliente");
+                String stDireccio = request.getParameter("txtdireccio");
+                String stReferenciaDir = request.getParameter("txtreferenciadir");
+                String stTelefono = request.getParameter("txttelefono");
                 
                 Pago objPago = new Pago(0, 0.0, null, null, null, null);
                 objPago.setIdPago(0);

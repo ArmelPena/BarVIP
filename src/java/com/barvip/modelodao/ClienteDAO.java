@@ -44,7 +44,9 @@ public class ClienteDAO implements iCliente {
             } else {
                 nResult = 0;
             }
-
+            con = null;
+            ps = null;
+            rs = null;
         } catch (SQLException ex) {
             nResult = 0;
             Logger.getLogger(iCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,11 +66,13 @@ public class ClienteDAO implements iCliente {
             ps.setString(4, cli.getEmail());
             ps.setString(5, cli.getPassword());
             nResult = ps.executeUpdate();
+            con = null;
+            ps = null;
+            rs = null;
         } catch (SQLException ex) {
             nResult = 0;
             Logger.getLogger(iCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nResult;
     }
-
 }
