@@ -54,7 +54,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class = "container mt-2">
             <div class="row">
                 <c:forEach var="producto" items="${productos}">
@@ -64,9 +64,11 @@
                                 <label>${producto.getNombres()}</label>
                             </div>
                             <div class="card-body">
-                                <i>$.${producto.getPrecio()}</i>
-                                <br>
                                 <center>
+                                    <h5>
+                                        Precio:<i>$${producto.getPrecio()}</i>
+                                    </h5>
+                                    <br>
                                     <img src="ControladorIMG?id=${producto.getId()}" width="150" height="150">
                                 </center>
                             </div>
@@ -74,7 +76,6 @@
                                 <label>${producto.getDescripcion()}</label>
                                 <div>
                                     <a href="Controlador?accion=AgregarCarrito&id=${producto.getId()}" class="btn btn-outline-info">Agregar a carrito</a>
-                                    <a href="Controlador?accion=Comprar&id=${producto.getId()}" class="btn btn-danger">Comprar</a>
                                 </div>
                             </div>
                         </div>
