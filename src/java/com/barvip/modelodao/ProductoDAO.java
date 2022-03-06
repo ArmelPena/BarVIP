@@ -27,21 +27,20 @@ public class ProductoDAO {
     PreparedStatement ps;
     ResultSet rs;
     
-    public Producto ListarIdProducto(int IdProd){
-        String sql = "select * from producto where IdProducto="+IdProd;
+    public Producto ListarIdProducto(int Id){
+        String sql = "select * from producto where Id="+Id;
         Producto objProducto = new Producto();
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
-                objProducto.setIdProducto(rs.getInt(1));
+                objProducto.setId(rs.getInt(1));
                 objProducto.setNombres(rs.getString(2));
                 objProducto.setFoto(rs.getBinaryStream(3));
                 objProducto.setDescripcion(rs.getString(4));
                 objProducto.setPrecio(rs.getDouble(5));
                 objProducto.setStock(rs.getInt(6));
-                
             }
         } catch (Exception e) {
         }
@@ -56,7 +55,7 @@ public class ProductoDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 Producto producto = new Producto();
-                producto.setIdProducto(rs.getInt(1));
+                producto.setId(rs.getInt(1));
                 producto.setNombres(rs.getString(2));
                 producto.setFoto(rs.getBinaryStream(3));
                 producto.setDescripcion(rs.getString(4));
@@ -71,7 +70,7 @@ public class ProductoDAO {
     }
     
     public void ListarImg(int id, HttpServletResponse response){
-        String sql = "select * from producto where IdProducto = " + id;
+        String sql = "select * from producto where Id = " + id;
         InputStream inputstream = null;
         OutputStream outputstream = null;
         BufferedInputStream bufferedinputstream = null;

@@ -44,7 +44,7 @@ public class Controlador extends HttpServlet {
     int Item;
     double TotalPagar = 0.0;
     int Cantidad = 1;
-    int IdProd;
+    int Producto_Id;
     Carrito objCarrito;
     
     String stNombres;
@@ -63,11 +63,10 @@ public class Controlador extends HttpServlet {
                 objCliente = null;
                 objCliente = new cliente();
                 objPago = null;
-                objPago= new Pago();
                 objPagosDAO = null;
                 objPagosDAO = new PagosDAO();
                 
-                int nIdCliente = 12;
+                int Cliente_Id = 17;
                 Date dHoy = new Date();
                 java.sql.Date sqlFecha = new java.sql.Date(dHoy.getTime());
                 String strFecha = sqlFecha.toString();
@@ -77,8 +76,8 @@ public class Controlador extends HttpServlet {
                 String stReferenciaDir = request.getParameter("txtreferenciadir");
                 String stTelefono = request.getParameter("txttelefono");
                 
-                Pago objPago = new Pago(0, 0.0, null, null, null, null);
-                objPago.setIdPago(0);
+                objPago = new Pago(0, 0.0, null, null, null, null);
+                objPago.setId(0);
                 objPago.setMonto(TotalPagar);
                 objPago.setNombreCliente(stNombreCliente);
                 objPago.setDireccion(stDireccio);
@@ -86,9 +85,9 @@ public class Controlador extends HttpServlet {
                 objPago.setTelefono(stTelefono);
                 nResult = objPagosDAO.GenerarPago(objPago);
                 if (nResult > 0){
-                    int nIdPago = nResult;              
+                    int Pago_Id = nResult;              
                     ComprasDAO objComprasDAO = new ComprasDAO();
-                    Compras objCompra = new Compras(nIdCliente,nIdPago,strFecha,TotalPagar,"Pendiente Pago",ListaCarrito);
+                    Compras objCompra = new Compras(0,strFecha,TotalPagar,"Pendiente Pago",Cliente_Id,Pago_Id,ListaCarrito);
                     int nRet = objComprasDAO.GenerarCompra(objCompra);
                     if(nRet != 0 && TotalPagar > 0){
                         request.getRequestDispatcher("Vistas/mensaje.jsp").forward(request, response);
@@ -145,12 +144,12 @@ public class Controlador extends HttpServlet {
                 }
                 break;                
             case "Comprar":
-                IdProd = Integer.parseInt(request.getParameter("id"));
-                objProducto = pdao.ListarIdProducto(IdProd);
+                Producto_Id = Integer.parseInt(request.getParameter("id"));
+                objProducto = pdao.ListarIdProducto(Producto_Id);
                 Item = Item + 1;
                 Carrito objCarrito = new Carrito();
                 objCarrito.setItem(Item);
-                objCarrito.setIdProducto(objProducto.getIdProducto());
+                objCarrito.setProducto_Id(objProducto.getId());
                 objCarrito.setNombres(objProducto.getNombres());
                 objCarrito.setDescripcion(objProducto.getDescripcion());
                 objCarrito.setPrecioCompra(objProducto.getPrecio());
@@ -169,27 +168,27 @@ public class Controlador extends HttpServlet {
             case "AgregarCarrito":
                 int pos = 0;
                 Cantidad = 1;
-                IdProd = Integer.parseInt(request.getParameter("id"));
-                objProducto = pdao.ListarIdProducto(IdProd);
+                Producto_Id = Integer.parseInt(request.getParameter("id"));
+                objProducto = pdao.ListarIdProducto(Producto_Id);
                 if (ListaCarrito.size() > 0) {
                     for (int i = 0; i < ListaCarrito.size(); i++) {
-                        if (IdProd == ListaCarrito.get(i).getIdProducto()) {
+                        if (Producto_Id == ListaCarrito.get(i).getProducto_Id()) {
                             pos = i;
                             i =  ListaCarrito.size() + 1;
                         }
                     }
-                    if (IdProd == ListaCarrito.get(pos).getIdProducto()) {
+                    if (Producto_Id == ListaCarrito.get(pos).getProducto_Id()) {
                         Cantidad = ListaCarrito.get(pos).getCantidad() + Cantidad;
                         double subtotal = ListaCarrito.get(pos).getPrecioCompra() * Cantidad;
                         ListaCarrito.get(pos).setCantidad(Cantidad);
                         ListaCarrito.get(pos).setSubtotal(subtotal);
                     } else {
-                        IdProd = Integer.parseInt(request.getParameter("id"));
-                        objProducto = pdao.ListarIdProducto(IdProd);
+                        Producto_Id = Integer.parseInt(request.getParameter("id"));
+                        objProducto = pdao.ListarIdProducto(Producto_Id);
                         Item = Item + 1;
                         objCarrito = new Carrito();
                         objCarrito.setItem(Item);
-                        objCarrito.setIdProducto(objProducto.getIdProducto());
+                        objCarrito.setProducto_Id(objProducto.getId());
                         objCarrito.setNombres(objProducto.getNombres());
                         objCarrito.setDescripcion(objProducto.getDescripcion());
                         objCarrito.setPrecioCompra(objProducto.getPrecio());
@@ -198,12 +197,12 @@ public class Controlador extends HttpServlet {
                         ListaCarrito.add(objCarrito);
                     }
                 } else {
-                    IdProd = Integer.parseInt(request.getParameter("id"));
-                    objProducto = pdao.ListarIdProducto(IdProd);
+                    Producto_Id = Integer.parseInt(request.getParameter("id"));
+                    objProducto = pdao.ListarIdProducto(Producto_Id);
                     Item = Item + 1;
                     objCarrito = new Carrito();
                     objCarrito.setItem(Item);
-                    objCarrito.setIdProducto(objProducto.getIdProducto());
+                    objCarrito.setProducto_Id(objProducto.getId());
                     objCarrito.setNombres(objProducto.getNombres());
                     objCarrito.setDescripcion(objProducto.getDescripcion());
                     objCarrito.setPrecioCompra(objProducto.getPrecio());
@@ -216,18 +215,18 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("Controlador?accion=tienda").forward(request, response);
                 break;
             case "Delete":
-                int idItem = Integer.parseInt(request.getParameter("idi"));
+                int Item = Integer.parseInt(request.getParameter("item"));
                 for (int i = 0; i < ListaCarrito.size(); i++) {
-                    if (ListaCarrito.get(i).getItem() == idItem) {
+                    if (ListaCarrito.get(i).getItem() == Item) {
                         ListaCarrito.remove(i);
                     }
                 }
                 break;
             case "ActualizarCantidad":
-                int idpro = Integer.parseInt(request.getParameter("idp"));
+                Producto_Id = Integer.parseInt(request.getParameter("idpro"));
                 int cant = Integer.parseInt(request.getParameter("Cantidad"));
                 for (int i = 0; i < ListaCarrito.size(); i++) {
-                    if (ListaCarrito.get(i).getIdProducto() == idpro) {
+                    if (ListaCarrito.get(i).getProducto_Id() == Producto_Id) {
                         ListaCarrito.get(i).setCantidad(cant);
                         double subt = ListaCarrito.get(i).getPrecioCompra()*cant;
                         ListaCarrito.get(i).setSubtotal(subt);

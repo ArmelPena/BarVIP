@@ -12,7 +12,7 @@ import java.io.InputStream;
  * @author ARMEL_000
  */
 public class Producto {
-    int IdProducto;
+    int Id;
     String Nombres;
     InputStream Foto;
     String Descripcion;
@@ -22,8 +22,8 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int IdProducto, String Nombres, InputStream Foto, String Descripcion, Double Precio, int Stock) {
-        this.IdProducto = IdProducto;
+    public Producto(int Id, String Nombres, InputStream Foto, String Descripcion, Double Precio, int Stock) {
+        this.Id = Id;
         this.Nombres = Nombres;
         this.Foto = Foto;
         this.Descripcion = Descripcion;
@@ -31,12 +31,12 @@ public class Producto {
         this.Stock = Stock;
     }
 
-    public int getIdProducto() {
-        return IdProducto;
+    public int getId() {
+        return Id;
     }
 
-    public void setIdProducto(int IdProducto) {
-        this.IdProducto = IdProducto;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getNombres() {

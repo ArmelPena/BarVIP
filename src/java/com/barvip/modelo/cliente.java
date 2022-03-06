@@ -10,7 +10,7 @@ package com.barvip.modelo;
  * @author ARMEL_000
  */
 public class cliente {
-int IdCliente;
+    int Id;
     String Dni;
     String Nombres;
     String Direccion;
@@ -20,8 +20,8 @@ int IdCliente;
     public cliente() {
     }
 
-    public cliente(int IdCliente, String Dni, String Nombres, String Direccion, String Email, String Password) {
-        this.IdCliente = IdCliente;
+    public cliente(int Id, String Dni, String Nombres, String Direccion, String Email, String Password) {
+        this.Id = Id;
         this.Dni = Dni;
         this.Nombres = Nombres;
         this.Direccion = Direccion;
@@ -29,12 +29,12 @@ int IdCliente;
         this.Password = Password;
     }
 
-    public int getIdCliente() {
-        return IdCliente;
+    public int getId() {
+        return Id;
     }
 
-    public void setIdCliente(int IdCliente) {
-        this.IdCliente = IdCliente;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getDni() {

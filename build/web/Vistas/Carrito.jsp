@@ -74,16 +74,16 @@
                                     <td>${car.getItem()}</td>
                                     <td>${car.getNombres()}</td>
                                     <td>${car.getDescripcion()}
-                                        <image src="ControladorIMG?id=${car.getIdProducto()}" width="50" heigth="50">
+                                        <image src="ControladorIMG?id=${car.getProducto_Id()}" width="50" heigth="50">
                                     </td>
                                     <td>${car.getPrecioCompra()}</td>
                                     <td>
-                                        <input type="hidden" id="idpro" value="${car.getIdProducto()}">
+                                        <input type="hidden" id="idpro" value="${car.getProducto_Id()}">
                                         <input type="number" id="Cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
                                     </td>
                                     <td>${car.getSubtotal()}</td>
                                     <td>
-                                        <input type="hidden" id="idi" value="${car.getItem()}">
+                                        <input type="hidden" id="item" value="${car.getItem()}">
                                         <a href="#" id="btnDelete">Eliminar</a>
                                     </td>
                                 </tr>

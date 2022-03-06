@@ -57,24 +57,24 @@
         
         <div class = "container mt-2">
             <div class="row">
-                <c:forEach var="p" items="${productos}">
+                <c:forEach var="producto" items="${productos}">
                     <div class="col-sm-3">
                         <div class="card">
                             <div class="card-header">
-                                <label>${p.getNombres()}</label>
+                                <label>${producto.getNombres()}</label>
                             </div>
                             <div class="card-body">
-                                <i>$.${p.getPrecio()}</i>
+                                <i>$.${producto.getPrecio()}</i>
                                 <br>
                                 <center>
-                                    <img src="ControladorIMG?id=${p.getIdProducto()}" width="150" height="150">
+                                    <img src="ControladorIMG?id=${producto.getId()}" width="150" height="150">
                                 </center>
                             </div>
                             <div class="card-footer text-center">
-                                <label>${p.getDescripcion()}</label>
+                                <label>${producto.getDescripcion()}</label>
                                 <div>
-                                    <a href="Controlador?accion=AgregarCarrito&id=${p.getIdProducto()}" class="btn btn-outline-info">Agregar a carrito</a>
-                                    <a href="Controlador?accion=Comprar&id=${p.getIdProducto()}" class="btn btn-danger">Comprar</a>
+                                    <a href="Controlador?accion=AgregarCarrito&id=${producto.getId()}" class="btn btn-outline-info">Agregar a carrito</a>
+                                    <a href="Controlador?accion=Comprar&id=${producto.getId()}" class="btn btn-danger">Comprar</a>
                                 </div>
                             </div>
                         </div>

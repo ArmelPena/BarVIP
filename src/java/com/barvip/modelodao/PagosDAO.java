@@ -37,10 +37,10 @@ public class PagosDAO {
             ps.setString(5, objPago.getReferenciaDir());
             nRetorno = ps.executeUpdate();
             if(nRetorno == 1){
-                sql = "Select @@IDENTITY AS IdPago";
+                sql = "Select @@IDENTITY AS Id";
                 rs = ps.executeQuery(sql);
                 rs.next();
-                nRetorno = rs.getInt("IdPago");
+                nRetorno = rs.getInt("Id");
                 rs.close();
             }
         } catch (SQLException ex) {

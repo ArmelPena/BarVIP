@@ -11,7 +11,7 @@ package com.barvip.modelo;
  */
 public class Carrito {
     int Item;
-    int IdProducto;
+    int Producto_Id;
     String Nombres;
     String Descripcion;
     double PrecioCompra;
@@ -21,9 +21,9 @@ public class Carrito {
     public Carrito() {
     }
 
-    public Carrito(int Item, int IdProducto, String Nombres, String Descripcion, double PrecioCompra, int Cantidad, double Subtotal) {
+    public Carrito(int Item, int Producto_Id, String Nombres, String Descripcion, double PrecioCompra, int Cantidad, double Subtotal) {
         this.Item = Item;
-        this.IdProducto = IdProducto;
+        this.Producto_Id = Producto_Id;
         this.Nombres = Nombres;
         this.Descripcion = Descripcion;
         this.PrecioCompra = PrecioCompra;
@@ -39,12 +39,12 @@ public class Carrito {
         this.Item = Item;
     }
 
-    public int getIdProducto() {
-        return IdProducto;
+    public int getProducto_Id() {
+        return Producto_Id;
     }
 
-    public void setIdProducto(int IdProducto) {
-        this.IdProducto = IdProducto;
+    public void setProducto_Id(int Producto_Id) {
+        this.Producto_Id = Producto_Id;
     }
 
     public String getNombres() {
@@ -86,6 +86,4 @@ public class Carrito {
     public void setSubtotal(double Subtotal) {
         this.Subtotal = Subtotal;
     }
-    
-    
 }

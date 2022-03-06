@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("tr #btnDelete").click(function () {
-        var idi = $(this).parent().find("#idi").val();
+        var item = $(this).parent().find("#item").val();
         swal({
             title: "Esta seguro de eliminar el producto del carrito?",
             text: "Una vez que lo elimine, deberá ir a la página de compras y agregarlo nuevamente!",
@@ -9,7 +9,7 @@ $(document).ready(function () {
             dangerMode: true,
         }).then((willDelete) => {
                 if (willDelete) {
-                    Eliminar(idi);
+                    Eliminar(item);
                     swal("El registro ha sido eliminado!", {
                         icon: "success",
                     }).then((willDelete)=>{
@@ -22,25 +22,25 @@ $(document).ready(function () {
                 }
         });
     });
-    function Eliminar(idi) {
+    function Eliminar(item) {
         var url = "Controlador?accion=Delete";
         $.ajax({
             type: 'POST',
             url: url,
-            data: "idi=" + idi,
+            data: "item=" + item,
             success: function (data, textStatus, jqXHR) {
             }
         });
     }
     
     $("tr #Cantidad").click(function(){
-        var idp = $(this).parent().find("#idpro").val();
+        var idpro = $(this).parent().find("#idpro").val();
         var cantidad = $(this).parent().find("#Cantidad").val();
         var url = "Controlador?accion=ActualizarCantidad";
         $.ajax({
             type: 'POST',
             url: url,
-            data: "idp="+idp+"&Cantidad="+cantidad,
+            data: "idpro="+idpro+"&Cantidad="+cantidad,
             success: function (data, textStatus, jqXHR){
                 location.href="Controlador?accion=Carrito";
             }

@@ -12,48 +12,33 @@ import java.util.List;
  * @author ARMEL_000
  */
 public class Compras {
-    private int IdCompras;
-    private int IdCliente;
-    private int IdPago;
+    private int Id;
     private String FechaCompras;
     private Double monto;
     private String Estado;
+    private int Cliente_Id;
+    private int Pago_Id;
     private List<Carrito> DetalleCompras;
 
     public Compras() {
     }
 
-    public Compras(int IdCliente, int IdPago, String FechaCompras, Double monto, String Estado, List<Carrito> DetalleCompras) {
-        this.IdCliente = IdCliente;
-        this.IdPago = IdPago;
+    public Compras(int Id, String FechaCompras, Double monto, String Estado, int Cliente_Id, int Pago_Id, List<Carrito> DetalleCompras) {
+        this.Id = Id;
         this.FechaCompras = FechaCompras;
         this.monto = monto;
         this.Estado = Estado;
+        this.Cliente_Id = Cliente_Id;
+        this.Pago_Id = Pago_Id;
         this.DetalleCompras = DetalleCompras;
     }
 
-    public int getIdCompras() {
-        return IdCompras;
+    public int getId() {
+        return Id;
     }
 
-    public void setIdCompras(int IdCompras) {
-        this.IdCompras = IdCompras;
-    }
-
-    public int getIdCliente() {
-        return IdCliente;
-    }
-
-    public void setIdCliente(int IdCliente) {
-        this.IdCliente = IdCliente;
-    }
-
-    public int getIdPago() {
-        return IdPago;
-    }
-
-    public void setIdPago(int IdPago) {
-        this.IdPago = IdPago;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getFechaCompras() {
@@ -80,6 +65,22 @@ public class Compras {
         this.Estado = Estado;
     }
 
+    public int getCliente_Id() {
+        return Cliente_Id;
+    }
+
+    public void setCliente_Id(int Cliente_Id) {
+        this.Cliente_Id = Cliente_Id;
+    }
+
+    public int getPago_Id() {
+        return Pago_Id;
+    }
+
+    public void setPago_Id(int Pago_Id) {
+        this.Pago_Id = Pago_Id;
+    }
+
     public List<Carrito> getDetalleCompras() {
         return DetalleCompras;
     }
@@ -87,5 +88,4 @@ public class Compras {
     public void setDetalleCompras(List<Carrito> DetalleCompras) {
         this.DetalleCompras = DetalleCompras;
     }
-
 }

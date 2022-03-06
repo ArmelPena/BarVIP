@@ -10,7 +10,7 @@ package com.barvip.modelo;
  * @author ARMEL_000
  */
 public class Pago {
-    private int IdPago;
+    private int Id;
     private Double Monto;
     private String NombreCliente;
     private String Direccion;
@@ -20,8 +20,8 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(int IdPago, Double Monto, String NombreCliente, String Direccion, String Telefono, String ReferenciaDir) {
-        this.IdPago = IdPago;
+    public Pago(int Id, Double Monto, String NombreCliente, String Direccion, String Telefono, String ReferenciaDir) {
+        this.Id = Id;
         this.Monto = Monto;
         this.NombreCliente = NombreCliente;
         this.Direccion = Direccion;
@@ -29,12 +29,12 @@ public class Pago {
         this.ReferenciaDir = ReferenciaDir;
     }
 
-    public int getIdPago() {
-        return IdPago;
+    public int getId() {
+        return Id;
     }
 
-    public void setIdPago(int IdPago) {
-        this.IdPago = IdPago;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public Double getMonto() {
@@ -76,9 +76,5 @@ public class Pago {
     public void setReferenciaDir(String ReferenciaDir) {
         this.ReferenciaDir = ReferenciaDir;
     }
-
-
-
-
     
 }
