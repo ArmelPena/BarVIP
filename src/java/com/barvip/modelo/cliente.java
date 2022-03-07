@@ -16,17 +16,19 @@ public class cliente {
     String Direccion;
     String Email;
     String Password;
-
+    Integer Perfil;
+    
     public cliente() {
     }
 
-    public cliente(int Id, String Dni, String Nombres, String Direccion, String Email, String Password) {
+    public cliente(int Id, String Dni, String Nombres, String Direccion, String Email, String Password, int Perfil) {
         this.Id = Id;
         this.Dni = Dni;
         this.Nombres = Nombres;
         this.Direccion = Direccion;
         this.Email = Email;
         this.Password = Password;
+        this.Perfil = Perfil;
     }
 
     public int getId() {
@@ -75,5 +77,13 @@ public class cliente {
 
     public void setPassword(String Password) {
         this.Password = Password;
+    }    
+    
+    public Integer getPerfil() {
+        return Perfil;
+    }
+
+    public void setPerfil(Integer Perfil) {
+        this.Perfil = Perfil;
     }    
 }
